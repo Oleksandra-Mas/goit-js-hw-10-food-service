@@ -1,11 +1,13 @@
 import './sass/main.scss';
-
+import menu from './menu.json'
+import menuItemsTpl from './templates/menu-items.hbs'
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 const refs = {
     themeSwitchToggle: document.getElementById("theme-switch-toggle"),
+    menuList: document.querySelector("ul.js-menu"),
 };
 SetTheme();
 refs.themeSwitchToggle.addEventListener("change", onThemeSwitchToggleClicked);
@@ -36,3 +38,9 @@ function SetTheme() {
     document.body.classList.add(theme);
     if (theme === Theme.DARK) refs.themeSwitchToggle.checked = true;
 }
+
+const menuMarkup = createMenuMarkup(menu);
+function createMenuMarkup(menu) {
+    return menu.map(menuItemsTpl).join('');
+}
+refs.menuList.insertAdjacentHTML('beforeend', menuMarkup);
