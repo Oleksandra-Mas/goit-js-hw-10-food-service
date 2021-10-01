@@ -9,7 +9,7 @@ const refs = {
     themeSwitchToggle: document.getElementById("theme-switch-toggle"),
     menuList: document.querySelector("ul.js-menu"),
 };
-SetTheme();
+setTheme();
 refs.themeSwitchToggle.addEventListener("change", onThemeSwitchToggleClicked);
 function onThemeSwitchToggleClicked() {
     const theme = localStorage.getItem('theme');
@@ -29,7 +29,7 @@ function addTheme(theme) {
 function removeTheme(theme) {
     document.body.classList.remove(theme);
 }
-function SetTheme() {
+function setTheme() {
     let theme = localStorage.getItem('theme');
     if (!theme) {
         theme = Theme.LIGHT;
